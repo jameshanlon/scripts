@@ -1,0 +1,12 @@
+#!/bin/sh
+infn=$1
+outfn=`basename $infn .pdf`.still.pdf
+
+# Embed fonts.
+gs -q -dSAFER -dNOPAUSE -dBATCH -sDEVICE=pdfwrite -sOutputFile=$outfn \
+    -dCompatibilityLevel=1.5 -dPDFSETTINGS=/prepress -c .setpdfwrite -f $infn
+
+# Strip metadata crap added by Ghostscript.
+exiftool -Title="" $outfn
+exiftool -Creator="" $outfn
+exiftool -CreatorTool="" $outfn

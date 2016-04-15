@@ -1,0 +1,4 @@
+#!/bin/bash
+chgrp -R xm_eng .
+chmod -R g+rwX .
+find . -type d -exec chmod g+s '{}' +

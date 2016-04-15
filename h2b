@@ -1,0 +1,17 @@
+#!/usr/bin/python
+import sys
+value = int(sys.argv[1], 16)
+string = bin(value)[2:]
+chars = []
+length = len(string)
+for i, x in enumerate(reversed(string)):
+    chars.append(x)
+    if i % 4 == 3:
+        chars.append(' ')
+# Leading zeros.
+for x in range(4 - (len(string) % 4)):
+    sys.stdout.write('0')
+# Binary digits with spaces.
+for x in reversed(chars):
+    sys.stdout.write(x)
+print
